@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('user_role')->default('User');
             $table->tinyInteger('user_status')->default(0);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
