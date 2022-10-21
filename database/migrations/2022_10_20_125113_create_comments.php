@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("comment");
             $table->unsignedBigInteger("news_id");
-            $table->unsignedBigInteger("tags_id");
+            $table->unsignedBigInteger("user_id");
 
             $table->foreign("news_id")
             ->references("id")
@@ -25,9 +25,9 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->foreign('tags_id')
+            $table->foreign('user_id')
             ->references('id')
-            ->on('tags')
+            ->on('users')
             ->onDelete('cascade');
             
             $table->softDeletes();
