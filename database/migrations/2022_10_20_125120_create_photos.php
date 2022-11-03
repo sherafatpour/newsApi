@@ -18,9 +18,16 @@ return new class extends Migration
             $table->string("photo_path");
             $table->string("photo_description");
             $table->unsignedBigInteger("news_id");
+            $table->unsignedBigInteger("news_user_id");
 
             $table->foreign("news_id")
             ->references("id")
+            ->on("news")
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreign("news_user_id")
+            ->references("user_id")
             ->on("news")
             ->onUpdate('cascade')
             ->onDelete('cascade');
