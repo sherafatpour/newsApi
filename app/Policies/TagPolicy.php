@@ -42,6 +42,8 @@ class TagPolicy
     public function create(User $user)
     {
         //
+        return $user->user_role === 'Admin' || $user->user_role === 'Manager';
+
     }
 
     /**
@@ -53,7 +55,11 @@ class TagPolicy
      */
     public function update(User $user, Tag $tag)
     {
+
+    
         //
+        return $user->user_role === 'Admin' || $user->user_role === 'Manager';
+
     }
 
     /**
@@ -66,6 +72,8 @@ class TagPolicy
     public function delete(User $user, Tag $tag)
     {
         //
+        return $user->user_role === 'Admin' || $user->user_role === 'Manager';
+
     }
 
     /**
@@ -78,6 +86,8 @@ class TagPolicy
     public function restore(User $user, Tag $tag)
     {
         //
+        return $user->user_role === 'Admin' || $user->user_role === 'Manager';
+
     }
 
     /**
@@ -89,6 +99,6 @@ class TagPolicy
      */
     public function forceDelete(User $user, Tag $tag)
     {
-        //
+        return $user->user_role === 'Admin' || $user->user_role === 'Manager' ||$tag->user_id == $user->id;
     }
 }

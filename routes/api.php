@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\TagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,15 @@ Route::prefix('v1/')->group(function () {
             Route::get('/{user}', [AuthController::class, 'show']);
             Route::delete('/{user}', [AuthController::class, 'destroy']);
             Route::post('/all', [AuthController::class, 'index']);
+
         });
     });
 
 
+
+        Route::resource('tag', TagController::class)->middleware('auth:sanctum');
+    
+ 
    // Route::resource('address', AddressController::class)->middleware('auth:sanctum');
 
 });
